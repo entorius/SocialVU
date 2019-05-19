@@ -1,0 +1,19 @@
+{
+  "name": "socialvu",
+  "version": "1.0.0",
+  "description": "socialvu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entorius/SocialVU.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entorius/SocialVU/issues"
+  },
+  "homepage": "https://github.com/entorius/SocialVU#readme"
+}
