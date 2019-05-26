@@ -5,8 +5,11 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: none !important;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -14,5 +17,24 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.container {
+    max-width: none !important;
+}
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.login-body{
+    width:100%;
+    height:80%;
+}
+#particles-js {
+    height: 100%;
+    background: #78003f;
+    position: absolute;
+    background-size: cover;
 }
 

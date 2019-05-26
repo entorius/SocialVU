@@ -117,7 +117,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\react\app.js" />
+    <Content Include="Scripts\react\appPar.js" />
+    <Content Include="Scripts\react\components\Base.js" />
+    <Content Include="Scripts\react\components\Page1.js" />
+    <Content Include="Scripts\react\components\Page2.js" />
     <Content Include="Scripts\react\dist\bundle.js" />
+    <Content Include="Scripts\react\particles.js" />
+    <Content Include="Scripts\react\Routes.js" />
+    <Content Include="Scripts\react\style.css" />
     <Content Include="Scripts\react\webpack.config.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Default\Index.cshtml" />
