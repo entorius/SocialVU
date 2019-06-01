@@ -119,14 +119,17 @@
     <Content Include="Scripts\react\app.js" />
     <Content Include="Scripts\react\appPar.js" />
     <Content Include="Scripts\react\components\Base.js" />
+    <Content Include="Scripts\react\components\Home.js" />
+    <Content Include="Scripts\react\components\Login.js" />
     <Content Include="Scripts\react\components\Page1.js" />
     <Content Include="Scripts\react\components\Page2.js" />
     <Content Include="Scripts\react\dist\bundle.js" />
     <Content Include="Scripts\react\particles.js" />
     <Content Include="Scripts\react\Routes.js" />
-    <Content Include="Scripts\react\style.css" />
     <Content Include="Scripts\react\webpack.config.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

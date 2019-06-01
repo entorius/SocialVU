@@ -5,6 +5,7 @@ var ReactDom = require('react-dom');
 import { HashRouter, Route } from 'react-router-dom'
 
 import Base from './components/Base.js';
+import Login from './components/Login.js'
 import Page1 from'./components/Page1.js';
 import Page2 from'./components/Page2.js';
 
@@ -23,14 +24,14 @@ class Routes extends React.Component {
     render() {
         return (
             <HashRouter>
-                <Route path="/" component={Base} />
-                <Route path="/home" component={Page1}/>
+                <Route exact path="/" component={Base} />
+                <Route exact path="/login" component={Login} />
             </HashRouter>
         );
     }
 }
 
 ReactDom.render(
-    <Routes/>,
+    <Routes />,
     document.getElementById("root")
 );
