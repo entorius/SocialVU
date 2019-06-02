@@ -23,6 +23,7 @@ const theme = createMuiTheme({
     },
 });
 
+import Login from './components/Login.js';
 
 class App extends React.Component {
     render() {
@@ -43,6 +44,8 @@ class Routes extends React.Component {
                 <Route path="/home" component={NewsPage} />
                 <Route path="/lectures" component={LecturesPage} />
                 <Route path="/events" component={EventsPage} />
+                <Route exact path="/" component={Base} />
+                <Route exact path="/login" component={Login} />
             </HashRouter>
         );
     }
