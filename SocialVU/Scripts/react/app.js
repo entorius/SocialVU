@@ -5,8 +5,24 @@ var ReactDom = require('react-dom');
 import { HashRouter, Route } from 'react-router-dom'
 
 import Base from './components/Base.js';
-import Page1 from'./components/Page1.js';
-import Page2 from'./components/Page2.js';
+import NewsPage from'./components/NewsPage.js';
+import LecturesPage from './components/LecturesPage.js';
+import EventsPage from './components/EventsPage.js';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#9e9e9e'
+        },
+
+        secondary: {
+            main: '#d32f2f'
+        }
+
+    },
+});
+
 
 class App extends React.Component {
     render() {
@@ -23,14 +39,18 @@ class Routes extends React.Component {
     render() {
         return (
             <HashRouter>
-                <Route path="/" component={Base} />
-                <Route path="/home" component={Page1}/>
+                <Route path="/" exact component={Base} />
+                <Route path="/home" component={NewsPage} />
+                <Route path="/lectures" component={LecturesPage} />
+                <Route path="/events" component={EventsPage} />
             </HashRouter>
         );
     }
 }
 
 ReactDom.render(
-    <Routes/>,
+    <MuiThemeProvider theme={theme}>
+        <Routes />
+     </MuiThemeProvider>,
     document.getElementById("root")
 );

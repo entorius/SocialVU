@@ -119,7 +119,9 @@
     <Content Include="Scripts\react\app.js" />
     <Content Include="Scripts\react\appPar.js" />
     <Content Include="Scripts\react\components\Base.js" />
-    <Content Include="Scripts\react\components\Page1.js" />
+    <Content Include="Scripts\react\components\EventsPage.js" />
+    <Content Include="Scripts\react\components\LecturesPage.js" />
+    <Content Include="Scripts\react\components\NewsPage.js" />
     <Content Include="Scripts\react\components\Page2.js" />
     <Content Include="Scripts\react\dist\bundle.js" />
     <Content Include="Scripts\react\particles.js" />
