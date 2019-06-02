@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    all: unset;
+    padding: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -27,14 +27,157 @@ body {
     height: 100%;
     position: absolute;
 }
-.login-body{
+#root {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #781341;
+}
+#root > div{
+    width:100%
+}
+#root > div > div >div > canvas{
+    z-index:0;
+}
+#root > div > div:nth-child(1) {
+    position:fixed;
     width:100%;
-    height:80%;
+    height:100%;
+}
+#root > div > div:nth-child(2) {
+    height: 100%;
+}
+.login-body {
+    width: 100%;
+    height: 100%;
+    /* max-height: 420px; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
 }
 #particles-js {
-    height: 100%;
-    background: #78003f;
-    position: absolute;
+    height:100%;
+    width:100%;
+    z-index:-10;
+    background: #781341;
+    position: fixed;
     background-size: cover;
 }
+.login-typography {
+    padding: 40px 35px 10px;
+    width: 95%;
+    max-width: 380px;
+    min-height: 350px;
+    width: 95%;
+    z-index: 20;
+}
+.login-header {
+    height: 100px;
+    width: 100%;
+}
+.login-text-confirm {
+    padding: 15px 0px 10px 0px;
+    font-family: Raleway,sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    font-weight: 200;
+    color: #3c3c3b;
+}
+.login-button {
+    width: 224px;
+    height: 31px;
+    padding: 6px 12px;
+    background-color: #781341;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    border: 1px solid transparent;
+}
+.login-button-worker {
+    margin: 15px 65px 0px 65px;
+}
+.login-button-student {
+    margin: 15px 65px 15px 65px;
+}
+.login-header > a > img {
+    height: 90px;
+}
+.login-cant-login-text {
+    color: #781341;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 26px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.login-field {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 18px !important;
+    margin: 0 0 8px 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+    background-color: rgb(232, 240, 254) !important;
+    max-width: none !important;
+}
+#login-username-field {
+    font-size: 18px !important;
+    height:45px;
+}
+#login-password-field {
+    font-size: 18px !important;
+    height:45px;
+}
+.login-password{
+    margin-top:1rem;
+    margin-bottom:2rem;
+}
+.login-username{
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+.login-button-login{
+    margin: 5px 65px 20px 65px;
+}
+.login-username > div > div:nth-child(1) {
+    align-self: center;
+}
+.login-username > div {
+    color: #989898;
+}
+    /*.login-username > div > div > div > div > input:focus .login-username> div > div > svg {
+        color: #78003F;
+    }*/
+.login-username > div > div:nth-child(2){
+    width:90%;
+}
+.login-username > div > div:nth-child(2) > :nth-child(1){
+    height: 100%;
+}
+.login-password > div {
+    color: #989898;
+}
+/*.login-password > div > div > div > div > input:focus + .login-password > div > div > svg{
+    color: #78003F;
+}*/
+.login-password > div > div:nth-child(1) {
+    align-self:center;
+}
+.login-password > div > div:nth-child(2) {
+    width: 90%;
+}
 
+.login-password > div > div:nth-child(2) > :nth-child(1) {
+    height: 100%;
+}
