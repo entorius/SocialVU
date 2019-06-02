@@ -5,9 +5,7 @@ var ReactDom = require('react-dom');
 import { HashRouter, Route } from 'react-router-dom'
 
 import Base from './components/Base.js';
-import Login from './components/Login.js'
-import Page1 from'./components/Page1.js';
-import Page2 from'./components/Page2.js';
+import Login from './components/Login.js';
 
 class App extends React.Component {
     render() {

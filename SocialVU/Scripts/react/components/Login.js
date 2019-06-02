@@ -8,13 +8,27 @@ import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
+import Particles from 'react-particles-js';
 
+const particleOpt = {
+    particles: {
+        number: {
+            value: 100,
+            density: {
+                enable: true,
+                value_area: 800
+            }
+        }
+    }
+}
 
 export default class Login extends React.Component {
     render() {
-
-
         return (
+            <div>
+                <Particles
+                    params={particleOpt}
+                />
             <React.Fragment>
                 <CssBaseline />
                 <Container class="login-body" maxWidth="sm">
@@ -81,6 +95,7 @@ export default class Login extends React.Component {
                     </Typography>
                 </Container>
             </React.Fragment>
+            </div>
         );
     }
 }

@@ -29,18 +29,11 @@
 
     <div class="container body-content">
         @RenderBody()
-        @*<hr />*@
-
-        <script type="text/javascript" src="~/Scripts/react/particles.js"></script>
-        <script type="text/javascript" src="~/Scripts/react/appPar.js"></script>
-        @*<footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
     </div>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

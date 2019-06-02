@@ -5,14 +5,33 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Particles from 'react-particles-js';
 
+const particleOpt = {
+    particles: {
+        number: {
+            value: 100,
+            density: {
+                enable: true,
+                value_area:800
+            }
+        }
+    }
+}
 
 export default class Base extends React.Component{
     render() {
         return (
-            <React.Fragment>
+            <div>
+                <Particles
+                    params={particleOpt}
+                />
+                <div>
+                <React.Fragment>
+                    
                 <CssBaseline />
-                <Container class="login-body" maxWidth="sm">
+                    <Container class="login-body" maxWidth="sm">
+                        
                     <Typography class="login-typography" component="div" style={{ backgroundColor: '#fff' }}>
                         <div class="login-header">
                             <a>
@@ -37,9 +56,11 @@ export default class Base extends React.Component{
                         <div class="login-cant-login-text">
                             Nepavyksta prisijungti?
                         </div>
-                        </Typography>
+                    </Typography>
                 </Container>
-            </React.Fragment>
+                </React.Fragment>
+                </div>
+                </div>
         );
     }
 }
