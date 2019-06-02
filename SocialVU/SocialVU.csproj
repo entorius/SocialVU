@@ -121,8 +121,8 @@
     <Content Include="Scripts\react\components\Base.js" />
     <Content Include="Scripts\react\components\EventsPage.js" />
     <Content Include="Scripts\react\components\LecturesPage.js" />
-    <Content Include="Scripts\react\components\NewsPage.js" />
     <Content Include="Scripts\react\components\Login.js" />
+    <Content Include="Scripts\react\components\NewsPage.js" />
     <Content Include="Scripts\react\dist\bundle.js" />
     <Content Include="Scripts\react\Routes.js" />
     <Content Include="Scripts\react\webpack.config.js" />
