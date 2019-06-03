@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialVU.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,12 @@ namespace SocialVU.Controllers
 {
     public class DefaultController : Controller
     {
+        private SocialVUContext db = new SocialVUContext();
+        
         // GET: Default
         public ActionResult Index()
         {
+            var test = db.News.FirstOrDefault(n => n.Id == 1);
             return View();
         }
     }
