@@ -69,6 +69,9 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+bundle.js
+package-lock.json
+package.json
 
 # Chutzpah Test files
 _Chutzpah*
