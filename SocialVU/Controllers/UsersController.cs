@@ -7,14 +7,14 @@ using System.Web.Mvc;
 
 namespace SocialVU.Controllers
 {
-    public class DefaultController : Controller
+    public class UsersController : Controller
     {
         private SocialVUContext db = new SocialVUContext();
-        
-        // GET: Default
-        public ActionResult Index()
+
+        [HttpPost]
+        public JsonResult Login(User user)
         {
-            return View();
+            return Json(null != db.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password));
         }
     }
 }
