@@ -9,8 +9,6 @@ namespace SocialVU.Controllers
 {
     public class DefaultController : Controller
     {
-        private SocialVUContext db = new SocialVUContext();
-        
         // GET: Default
         public ActionResult Index()
         {

@@ -1,8 +1,6 @@
 ﻿using SocialVU.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
 
 namespace SocialVU.Controllers
@@ -15,6 +13,21 @@ namespace SocialVU.Controllers
         public JsonResult Login(User user)
         {
             return Json(null != db.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password));
+        }
+
+        [HttpPut]
+        public ActionResult Change(User user)
+        {
+            var userInDb = db.Users.FirstOrDefault(u => u.Email == user.Email);
+            if(userInDb != null)
+            {
+                userInDb.Password = user.Password;
+                db.SaveChanges();
+
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+
+            return new HttpNotFoundResult();
         }
     }
 }
