@@ -120,6 +120,8 @@ export default class Login extends React.Component {
             if (request.readyState == XMLHttpRequest.DONE) {
                 //handle data
                 //request.responseText
+                //var message = JSON.parse(request.responseText);
+                //console.log(new Date(parseInt(message[0].Date.substr(6))));
             }
         }
         request.open('POST', 'Users/Login', true);

@@ -15,5 +15,7 @@ namespace SocialVU.Models
         public string Text { get; set; }
         public string From { get; set; }
         public string To { get; set; }
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
     }
 }
