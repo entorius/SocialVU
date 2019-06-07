@@ -23,6 +23,14 @@ const particleOpt = {
 }
 
 export default class Login extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            userName: "",
+            password: ""
+        }
+        this.loginVerification = this.loginVerification.bind(this);
+    }
     render() {
         return (
             <div class="particles-login">
@@ -50,6 +58,8 @@ export default class Login extends React.Component {
                                         </Grid>
                                         <Grid item>
                                             <TextField
+                                                value={this.state.userName}
+                                                onChange={e => this.setState({ userName: e.target.value })}
                                                 id="login-username-field"
                                                 fullWidth
                                                 style={{ margin: 8 }}
@@ -69,6 +79,8 @@ export default class Login extends React.Component {
                                         </Grid>
                                         <Grid item>
                                     <TextField
+                                        value={this.state.password}
+                                        onChange={e => this.setState({ password: e.target.value })}
                                         id="login-password-field"
                                         fullWidth
                                         style={{ margin: 8 }}
@@ -87,7 +99,6 @@ export default class Login extends React.Component {
                                 <Button variant="contained" class="login-button login-button-login">
                                     PRISIJUNGTI
                                 </Button>
-                            </Link>
                         </div>
                         <div class="login-cant-login-text">
                             Nepavyksta prisijungti?
@@ -97,5 +108,23 @@ export default class Login extends React.Component {
             </React.Fragment>
             </div>
         );
+    }
+
+    loginVerification() {
+        var user = {
+            Email: this.state.userName,
+            Password: this.state.password
+        }
+
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == XMLHttpRequest.DONE) {
+                //handle data
+                //request.responseText
+            }
+        }
+        request.open('POST', 'Users/Login', true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(JSON.stringify(user));
     }
 }
