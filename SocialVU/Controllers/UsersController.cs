@@ -12,7 +12,18 @@ namespace SocialVU.Controllers
         [HttpPost]
         public JsonResult Login(User user)
         {
-            return Json(null != db.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password));
+            var userInDb = db.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
+
+            var isLoginSuccessful = userInDb != null;
+
+            if (isLoginSuccessful)
+            {
+                return Json(new { userId = userInDb.Id });
+            }
+            else
+            {
+                return Json(null);
+            }
         }
 
         [HttpPut]
