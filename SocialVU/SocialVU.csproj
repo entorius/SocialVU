@@ -100,8 +100,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SocialVUDatabase.mdf" />
+    <Content Include="App_Data\SocialVUDatabase_log.ldf">
+      <DependentUpon>SocialVUDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChatStyles.css" />
+    <Content Include="Content\Email.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -119,7 +125,12 @@
     <Content Include="Scripts\react\app.js" />
     <Content Include="Scripts\react\components\authenticationPage.js" />
     <Content Include="Scripts\react\components\Base.js" />
+    <Content Include="Scripts\react\components\ChatPage\ChatPage.js" />
+    <Content Include="Scripts\react\components\Email\EmailOptions.js" />
+    <Content Include="Scripts\react\components\Email\EmailPage.js" />
+    <Content Include="Scripts\react\components\Email\EmailPageNew.js" />
     <Content Include="Scripts\react\components\EventsPage.js" />
+    <Content Include="Scripts\react\components\Home.js" />
     <Content Include="Scripts\react\components\LecturesPage.js" />
     <Content Include="Scripts\react\components\Login.js" />
     <Content Include="Scripts\react\components\NewsPage.js" />
@@ -162,7 +173,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

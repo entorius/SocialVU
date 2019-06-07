@@ -22,7 +22,7 @@ const particleOpt = {
 export default class Base extends React.Component{
     render() {
         return (
-            <div>
+            <div class="particles-login">
                 <Particles
                     params={particleOpt}
                 />
@@ -30,18 +30,18 @@ export default class Base extends React.Component{
                 <React.Fragment>
                     
                 <CssBaseline />
-                    <Container class="login-body" maxWidth="sm">
+                    <Container className="login-body" maxWidth="sm">
                         
-                    <Typography class="login-typography" component="div" style={{ backgroundColor: '#fff' }}>
-                        <div class="login-header">
+                    <Typography className="login-typography" component="div" style={{ backgroundColor: '#fff' }}>
+                        <div className="login-header">
                             <a>
                                 <img src="https://sso.vu.lt/SSO/module.php/themevu/logo_sso_lt.svg" alt="logo"/>
                             </a>
                         </div>
-                        <div class="login-text-confirm">
+                        <div className="login-text-confirm">
                             Paslaugai reikalingas Jūsų tapatybės patvirtinimas
                         </div>
-                        <div class="login-buttons-choose">
+                        <div className="login-buttons-choose">
                             <Link to="/login">
                                 <Button variant="contained" class="login-button login-button-worker">
                                     VU DARBUOTOJAI
@@ -53,7 +53,7 @@ export default class Base extends React.Component{
                                 </Button>
                             </Link>
                         </div>
-                        <div class="login-cant-login-text">
+                        <div className="login-cant-login-text">
                             Nepavyksta prisijungti?
                         </div>
                     </Typography>

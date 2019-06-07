@@ -25,13 +25,13 @@ const particleOpt = {
 export default class Login extends React.Component {
     render() {
         return (
-            <div>
+            <div class="particles-login">
                 <Particles
                     params={particleOpt}
                 />
             <React.Fragment>
                 <CssBaseline />
-                <Container class="login-body" maxWidth="sm">
+                    <Container class="particles-login login-body" maxWidth="sm">
                     <Typography class="login-typography" component="div" style={{ backgroundColor: '#fff' }}>
                         <div class="login-header">
                             <a>
@@ -83,7 +83,7 @@ export default class Login extends React.Component {
                                     </Grid>
                                 </div>
                             </form>
-                            <Link to="/home">
+                                <Link to="/home/emailPage">
                                 <Button variant="contained" class="login-button login-button-login">
                                     PRISIJUNGTI
                                 </Button>
