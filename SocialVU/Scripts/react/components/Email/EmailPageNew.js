@@ -33,19 +33,34 @@ const styles = theme => ({
     demo: {
         backgroundColor: theme.palette.background.paper,
     },
-    title: {
-        margin: theme.spacing(4, 0, 2),
+    titleListItem: {
         fontSize: 20,
         textAlign: 'center',
-        textcolor: '#d32f2f',
+        textcolor: '#000000',
         marginBottom: theme.spacing(3)
+    },
+    titleParentListItem: {
+        width:'100%',
+        display:'flex'
+    },
+    contentListItem: {
+        display: 'flex',
+        flexWrap: 'wrap'
+    },
+    descriptionListItem: {
+        fontSize: 20,
+        width:'70%',
+        marginLeft: 60
+    },
+    dateListItem: {
+        width: '30%'
     },
     listSection: {
         backgroundColor: 'inherit',
     },
     card: {
+        height: '90%',
         width: '100%',
-        height: 250,
         marginBottom: theme.spacing(3)
 
     },
@@ -54,11 +69,19 @@ const styles = theme => ({
         color: '#9e9e9e',
 
     },
+    fromListItem: {
+        color: '#414141',
+        fontSize: 19,
+        alignSelf:'center',
+        width: '80%',
+        marginLeft: 20
+    },
     text: {
         fontSize: 10,
     },
     decriptionText: {
-        fontSize: 12,
+        marginLeft: 60,
+        fontSize: '15px !important'
     },
     divider: {
         marginTop: theme.spacing(1),
@@ -74,6 +97,18 @@ const styles = theme => ({
         display: 'block',
         textAlign: 'initial',
         width: '100%'
+    },
+    mailBodyFrom: {
+        fontSize:25
+    },
+    mailBodyTo: {
+        fontSize: 25
+    },
+    mailBodyDescription: {
+        fontSize: 50
+    },
+    mailBodyText: {
+        fontSize: 30
     }
 });
 
@@ -81,6 +116,7 @@ const styles = theme => ({
 class EmailPageNew extends React.Component {
     constructor(props) {
         super(props);
+        this.getIncomingEmails();
         this.state = {
             events: [
                 { key: 1, title: "testas", userEmail: "someone.getCool@gmail.com", sender:"karolis.petrauskas@mif.dest.vu.lt", description: "aprašymas1", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
@@ -92,6 +128,7 @@ class EmailPageNew extends React.Component {
                 { key: 7, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas7", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
                 { key: 8, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas8", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
             ],
+            incommingMessages: [{Date: "", Description: "", From: "", Id: 1, Text: "", To: ""}],
             openDialog: false,
             dialogIndex: 0,
             messageIndex: 0
@@ -111,7 +148,7 @@ class EmailPageNew extends React.Component {
                         <li key={`section-${sectionId}`} className={classes.listSection}>
                             <ul className={classes.ul}>
                                 <ListSubheader className={classes.stickyHeader}>{`I'm sticky ${sectionId}`}</ListSubheader>
-                                {this.state.events.map((event, index) => (
+                                    {this.state.incommingMessages.map((incommingMessage, index) => (
                                     <Grid >
                                             <Card className={classes.card} key={index}>
                                                 <ButtonBase
@@ -123,29 +160,32 @@ class EmailPageNew extends React.Component {
                                                             });
                                                     }}
                                                 >
-                                                    <CardContent>
-                                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                                        <Typography className={classes.title} color="secondary" >
-                                                            {event.title}
+                                                    <CardContent className={classes.contentListItem}>
+                                                        <Avatar alt="Remy Sharp" src="../../../../Pictures/elon-user.jpg" />
+                                                        <Typography className={classes.fromListItem} color="secondary" >
+                                                            {incommingMessage.From}
                                                         </Typography>
-                                                        <Grid
-                                                            container
-                                                            direction="row"
-                                                        >
-                                                            <CalenderIcon className={classes.icon} />
-                                                            <Typography className={classes.text} color="primary" >Data: {event.date} {event.time}</Typography>
+                                                        <Grid className={classes.titleParentListItem}>
+                                                            <Typography className={classes.descriptionListItem} color="secondary" >
+                                                                {incommingMessage.Description}
+                                                            </Typography>
+                                                            <Grid
+                                                                container
+                                                                direction="row"
+                                                                className={classes.dateListItem}
+                                                            >
+                                                                <CalenderIcon className={classes.icon} />
+                                                                <Typography className={classes.text} color="primary" >Data: {incommingMessage.Date}</Typography>
+                                                            </Grid>
                                                         </Grid>
-                                                        <Grid
-                                                            container
-                                                            direction="row"
-                                                        >
-                                                            <LocationIcon className={classes.icon} />
-                                                            <Typography className={classes.text} color="primary"> Vieta: {event.location} </Typography>
-                                                        </Grid>
-                                                        <Divider className={classes.divider} />
+                                                       
                                                         <Typography className={classes.decriptionText}>
-                                                {event.description}
+                                                            {incommingMessage.Text}
                                                         </Typography>
+                                                       
+                                                      
+                                                        <Divider className={classes.divider} />
+                                                        
                                                     </CardContent>
                                                 </ButtonBase>
                                             </Card>
@@ -156,39 +196,59 @@ class EmailPageNew extends React.Component {
                     ))}
                     </List>
                 </div>
-                <div>
+                <div className="email-mail-body">
                     <Card className={classes.card}>
                         <CardContent>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                {this.state.events[this.state.messageIndex].title}
+                            <Typography className={classes.mailBodyFrom} color="textSecondary" gutterBottom>
+                                From: {this.state.incommingMessages[this.state.messageIndex].From}
                             </Typography>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                {this.state.events[this.state.messageIndex].sender}
+                            <Divider className={classes.divider} />
+                            <Typography className={classes.mailBodyTo} color="textSecondary" gutterBottom>
+                                To: {this.state.incommingMessages[this.state.messageIndex].To}
                             </Typography>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                {this.state.events[this.state.messageIndex].userEmail}
+                            <Divider className={classes.divider} />
+                            <Typography className={classes.mailBodyDescription} color="textSecondary" gutterBottom>
+                                {this.state.incommingMessages[this.state.messageIndex].Description}
                             </Typography>
-                            
-                            <Typography variant="h5" component="h2">
-                                {this.state.events[this.state.messageIndex].description}
+                            <Divider className={classes.divider} />
+                            <Typography className={classes.mailBodyText} variant="h5" component="h2">
+                                {this.state.incommingMessages[this.state.messageIndex].Text}
                                 </Typography>
-                            <Typography className={classes.pos} color="textSecondary">
-                                adjective
-                                </Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                                {'"a benevolent smile"'}
-                            </Typography>
                         </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
+                        
                     </Card>
                 </div>
                 
             </div>
         );
+    }
+    getIncomingEmails() {
+        var userId = {
+            Id: localStorage.getItem("userId")
+        }
+
+        var request = new XMLHttpRequest();
+        self = this;
+        request.onreadystatechange = function () {
+            if (request.readyState == XMLHttpRequest.DONE) {
+                //handle data
+                var data = JSON.parse(request.responseText);
+                for (var i = 0; i < data.length; i++) {
+                    var date = new Date(parseInt(data[i].Date.substr(6)));
+                    data[i].Date = date.toDateString();
+                }
+                console.log(data);
+                self.setState({ incommingMessages: data });
+                console.log(self.state.incommingMessages);
+                //var message = JSON.parse(request.responseText);
+                //console.log(new Date(parseInt(message[0].Date.substr(6))));
+            }
+        }
+        request.open('GET', 'messages/received/' + localStorage.getItem("userId"), true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(localStorage.getItem("userId"));
+        
+
     }
 }
 

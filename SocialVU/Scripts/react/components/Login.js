@@ -96,7 +96,7 @@ export default class Login extends React.Component {
                                 </div>
                             </form>
                                 <Link to="/home/emailPage">
-                                <Button variant="contained" class="login-button login-button-login">
+                                    <Button variant="contained" onClick={this.loginVerification} class="login-button login-button-login">
                                     PRISIJUNGTI
                                 </Button>
                                 </Link>
@@ -121,7 +121,8 @@ export default class Login extends React.Component {
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 //handle data
-                //request.responseText
+                localStorage.setItem('userId', JSON.parse(request.responseText).userId);
+                console.log(localStorage.getItem('userId'));
                 //var message = JSON.parse(request.responseText);
                 //console.log(new Date(parseInt(message[0].Date.substr(6))));
             }
