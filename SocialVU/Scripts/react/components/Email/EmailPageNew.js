@@ -83,14 +83,14 @@ class EmailPageNew extends React.Component {
         super(props);
         this.state = {
             events: [
-                { key: 1, title: "testas", sender:"karolis.petrauskas@mif.dest.vu.lt", description: "aprašymas1", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 2, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas2", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 3, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas3", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 4, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas4", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 5, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas5", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 6, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas6", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 7, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas7", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 8, title: "testas", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas8", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 1, title: "testas", userEmail: "someone.getCool@gmail.com", sender:"karolis.petrauskas@mif.dest.vu.lt", description: "aprašymas1", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 2, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas2", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 3, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas3", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 4, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas4", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 5, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas5", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 6, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas6", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 7, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas7", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
+                { key: 8, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas8", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
             ],
             openDialog: false,
             dialogIndex: 0,
@@ -160,8 +160,15 @@ class EmailPageNew extends React.Component {
                     <Card className={classes.card}>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                Word of the Day
-                                </Typography>
+                                {this.state.events[this.state.messageIndex].title}
+                            </Typography>
+                            <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                {this.state.events[this.state.messageIndex].sender}
+                            </Typography>
+                            <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                {this.state.events[this.state.messageIndex].userEmail}
+                            </Typography>
+                            
                             <Typography variant="h5" component="h2">
                                 {this.state.events[this.state.messageIndex].description}
                                 </Typography>

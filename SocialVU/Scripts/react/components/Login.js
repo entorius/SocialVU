@@ -99,6 +99,7 @@ export default class Login extends React.Component {
                                 <Button variant="contained" class="login-button login-button-login">
                                     PRISIJUNGTI
                                 </Button>
+                                </Link>
                         </div>
                         <div class="login-cant-login-text">
                             Nepavyksta prisijungti?
@@ -120,7 +121,7 @@ export default class Login extends React.Component {
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 //handle data
-                //request.responseText
+                console.log(request.responseText);
             }
         }
         request.open('POST', 'Users/Login', true);
