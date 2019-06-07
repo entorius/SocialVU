@@ -12,18 +12,32 @@ namespace SocialVU.Controllers
     {
         private SocialVUContext db = new SocialVUContext();
 
-        [HttpPost]
-        [Route("messages/received")]
-        public JsonResult Received(User user)
+        [HttpGet]
+        [Route("messages/received/{id}")]
+        public JsonResult Received(int id)
         {
-            return Json(db.Messages.ToList().FindAll(m => m.To == user.Email));
+            var userInDb = db.Users.FirstOrDefault(u => u.Id == id);
+
+            if(userInDb != null)
+            {
+                return Json(db.Messages.ToList().FindAll(m => m.To == userInDb.Email), JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(null);
         }
 
-        [HttpPost]
-        [Route("messages/sent")]
-        public JsonResult Sent(User user)
+        [HttpGet]
+        [Route("messages/sent/{id}")]
+        public JsonResult Sent(int id)
         {
-            return Json(db.Messages.ToList().FindAll(m => m.From == user.Email));
+            var userInDb = db.Users.FirstOrDefault(u => u.Id == id);
+
+            if (userInDb != null)
+            {
+                return Json(db.Messages.ToList().FindAll(m => m.From == userInDb.Email), JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(null);
         }
         
         [HttpPost]

@@ -121,7 +121,9 @@ export default class Login extends React.Component {
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 //handle data
-                console.log(request.responseText);
+                //request.responseText
+                //var message = JSON.parse(request.responseText);
+                //console.log(new Date(parseInt(message[0].Date.substr(6))));
             }
         }
         request.open('POST', 'Users/Login', true);
