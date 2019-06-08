@@ -36,14 +36,7 @@ const styles = theme => ({
 class MainPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            news: [
-                { title: "testas", description: "aprašymas", date: "2019-05-29" },
-                { title: "testas", description: "aprašymas", date: "2019-05-29" },
-                { title: "testas", description: "aprašymas", date: "2019-05-29" },
-                { title: "testas", description: "aprašymas", date: "2019-05-29" },
-            ]
-        }
+        this.state = this.getNews();
     }
 
     render() {
@@ -77,6 +70,19 @@ class MainPage extends React.Component {
         )
     }
 
+    getNews() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == XMLHttpRequest.DONE) {
+                console.log(request.responseText);
+
+                return JSON.parse(request.responseText);
+            }
+        }
+        request.open('GET', 'news/list', true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send();
+    }
 }
 
 
