@@ -76,6 +76,9 @@ class Home extends React.Component {
                         <Link to="/home/lecturers" className={classes.homeLink}>
                             <Button className={classes.menuButton} color="inherit">Dėstytojų puslapiai</Button>
                         </Link>
+                        <Link to="/home/faq" className={classes.homeLink}>
+                            <Button className={classes.menuButton} color="inherit">D.U.K.</Button>
+                        </Link>
                         <Link to="/home/emailPage" className={classes.homeLink}>
                             <Button className={classes.menuButton} color="inherit">Paštas</Button>
                         </Link>
