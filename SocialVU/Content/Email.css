@@ -215,6 +215,7 @@ body main .padding-r .mail-attach {
     display: flex;
     flex-wrap: wrap;
     height: 90%;
+    min-width: 1200px;
 }
 .email-options {
     display: flex;
@@ -237,4 +238,5 @@ body main .padding-r .mail-attach {
     margin-left: 40px;
     width: 65%;
     height: 100%;
+    min-width: 600px;
 }
