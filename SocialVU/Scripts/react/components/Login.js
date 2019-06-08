@@ -139,6 +139,7 @@ export default class Login extends React.Component {
                 }
                 else {
                     //login succesfull
+                    self.setState({ unsuccesfullLogin: false })
                     console.log(request.responseText);
                     localStorage.setItem('userId', JSON.parse(request.responseText).userId);
                     console.log(localStorage.getItem('userId'));
