@@ -34,6 +34,7 @@ body {
 #root {
     width: 100%;
     height: 100%;
+    min-width: 1400px;
 }
 #root > div{
     width:100%
@@ -179,6 +180,10 @@ body {
 
 .login-password > div > div:nth-child(2) > :nth-child(1) {
     height: 100%;
+}
+.login-unsuccesful {
+    font-size: 15px;
+    color: #781341;
 }
 .particles-login > div:nth-child(1){
     position:fixed;

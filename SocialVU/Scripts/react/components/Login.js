@@ -10,6 +10,7 @@ import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 import { Redirect } from "react-router-dom";
 import Particles from 'react-particles-js';
 
+
 const particleOpt = {
     particles: {
         number: {
@@ -29,6 +30,7 @@ export default class Login extends React.Component {
             userName: "",
             password: "",
             redirectToHome: false,
+            unsuccesfullLogin:false
         }
         this.loginVerification = this.loginVerification.bind(this);
     }
@@ -97,12 +99,18 @@ export default class Login extends React.Component {
                                         }}
                                             />
                                         </Grid>
-                                    </Grid>
-                                </div>
+                                        </Grid>
+                                        </div>
+                                        
                                 </form>
-                                <Button variant="contained" onClick={this.loginVerification} class="login-button login-button-login">
-                                    PRISIJUNGTI
-                                </Button>
+                                <div onClick={this.loginVerification}>
+                                    {
+                                        this.state.unsuccesfullLogin && <div className="login-unsuccesful">Neteisingas prisijungimo vardas arba slaptažodis</div>
+                                    }
+                                    <Button variant="contained" class="login-button login-button-login">
+                                        PRISIJUNGTI
+                                    </Button>
+                                </div>
                         </div>
                         <div className="login-cant-login-text">
                             Nepavyksta prisijungti?
@@ -127,9 +135,11 @@ export default class Login extends React.Component {
                 if (request.responseText === "") {
                 //login unsuccesfull
                     console.log("nepavyko prisijungti");
+                    self.setState({ unsuccesfullLogin: true });
                 }
                 else {
                     //login succesfull
+                    self.setState({ unsuccesfullLogin: false })
                     console.log(request.responseText);
                     localStorage.setItem('userId', JSON.parse(request.responseText).userId);
                     console.log(localStorage.getItem('userId'));
