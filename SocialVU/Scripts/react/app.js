@@ -8,6 +8,9 @@ import Base from './components/Base.js';
 import NewsPage from'./components/NewsPage.js';
 import LecturesPage from './components/LecturesPage.js';
 import EventsPage from './components/EventsPage.js';
+//import ChatPage from './components/ChatPage/ChatPage.js';
+import Home from './components/Home';
+import EmailPageNew from './components/Email/EmailPageNew.js';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -40,12 +43,15 @@ class Routes extends React.Component {
     render() {
         return (
             <HashRouter>
-                <Route path="/" exact component={Base} />
-                <Route path="/home" component={NewsPage} />
-                <Route path="/lectures" component={LecturesPage} />
-                <Route path="/events" component={EventsPage} />
+                <Route path="/home" component={Home} />
+                <Route path="/home/newsPage" component={NewsPage} />
+                <Route path="/home/lecturers" component={LecturesPage} />
+                <Route path="/home/events" component={EventsPage} />
                 <Route exact path="/" component={Base} />
                 <Route exact path="/login" component={Login} />
+                {/*<Route path="/chatPage" component={ChatPage} />*/}
+                <Route path="/home/emailPage" component={EmailPageNew} />
+                
             </HashRouter>
         );
     }
