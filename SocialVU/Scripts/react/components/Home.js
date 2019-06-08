@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -41,6 +42,9 @@ const styles = theme => ({
         fontSize: 18,
         marginLeft: 25,
         
+    },
+    homeLink: {
+        color: 'white !important'
     }
 });
 
@@ -63,16 +67,26 @@ class Home extends React.Component {
                         <Typography variant="h6" className={classes.title}>
                             Vilniaus Universitetas SocialVU
                             </Typography>
-                        <Button className={classes.menuButton} color="inherit">Naujienos</Button>
-                        <Button className={classes.menuButton} color="inherit">Renginiai</Button>
-                        <Button className={classes.menuButton} color="inherit">Dėstytojų puslapiai</Button>
-                        <Button className={classes.menuButton} color="inherit">Paštas</Button>
-                        <Button className={classes.menuButtonLogOff} color="inherit">
+                        <Link to="/home/newsPage" className={classes.homeLink}>
+                            <Button className={classes.menuButton} color="inherit">Naujienos</Button>
+                        </Link>
+                        <Link to="/home/events" className={classes.homeLink}>
+                            <Button className={classes.menuButton} color="inherit">Renginiai</Button>
+                        </Link>
+                        <Link to="/home/lecturers" className={classes.homeLink}>
+                            <Button className={classes.menuButton} color="inherit">Dėstytojų puslapiai</Button>
+                        </Link>
+                        <Link to="/home/emailPage" className={classes.homeLink}>
+                            <Button className={classes.menuButton} color="inherit">Paštas</Button>
+                        </Link>
+                        <Link to="/" className={classes.homeLink}>
+                            <Button className={classes.menuButtonLogOff} color="inherit">
                             <FontAwesomeIcon size="1x" icon={faSignOutAlt} />
                             <span className="margin-left-10">
                             Atsijungti
                             </span>    
-                        </Button>
+                            </Button>
+                        </Link>
                     </Toolbar>
                 </AppBar>
             </div>

@@ -45,7 +45,7 @@ class Routes extends React.Component {
             <HashRouter>
                 <Route path="/home" component={Home} />
                 <Route path="/home/newsPage" component={NewsPage} />
-                <Route path="/home/lectures" component={LecturesPage} />
+                <Route path="/home/lecturers" component={LecturesPage} />
                 <Route path="/home/events" component={EventsPage} />
                 <Route exact path="/" component={Base} />
                 <Route exact path="/login" component={Login} />
