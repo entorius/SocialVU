@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Particles from 'react-particles-js';
 
 const particleOpt = {
@@ -27,11 +27,16 @@ export default class Login extends React.Component {
         super(props)
         this.state = {
             userName: "",
-            password: ""
+            password: "",
+            redirectToHome: false,
         }
         this.loginVerification = this.loginVerification.bind(this);
     }
+
     render() {
+        if (this.state.redirectToHome === true) {
+            return <Redirect to='/home/emailPage' />
+        }
         return (
             <div class="particles-login">
                 <Particles
@@ -94,14 +99,12 @@ export default class Login extends React.Component {
                                         </Grid>
                                     </Grid>
                                 </div>
-                            </form>
-                                <Link to="/home/emailPage">
-                                    <Button variant="contained" onClick={this.loginVerification} class="login-button login-button-login">
+                                </form>
+                                <Button variant="contained" onClick={this.loginVerification} class="login-button login-button-login">
                                     PRISIJUNGTI
                                 </Button>
-                                </Link>
                         </div>
-                        <div class="login-cant-login-text">
+                        <div className="login-cant-login-text">
                             Nepavyksta prisijungti?
                         </div>
                     </Typography>
@@ -116,13 +119,22 @@ export default class Login extends React.Component {
             Email: this.state.userName,
             Password: this.state.password
         }
-
+        var self = this;
         var request = new XMLHttpRequest();
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 //handle data
-                localStorage.setItem('userId', JSON.parse(request.responseText).userId);
-                console.log(localStorage.getItem('userId'));
+                if (request.responseText === "") {
+                //login unsuccesfull
+                    console.log("nepavyko prisijungti");
+                }
+                else {
+                    //login succesfull
+                    console.log(request.responseText);
+                    localStorage.setItem('userId', JSON.parse(request.responseText).userId);
+                    console.log(localStorage.getItem('userId'));
+                    self.setState({ redirectToHome: true });
+                }
                 //var message = JSON.parse(request.responseText);
                 //console.log(new Date(parseInt(message[0].Date.substr(6))));
             }
@@ -131,4 +143,5 @@ export default class Login extends React.Component {
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.send(JSON.stringify(user));
     }
+
 }
