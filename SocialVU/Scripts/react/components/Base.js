@@ -30,9 +30,9 @@ export default class Base extends React.Component{
                 <React.Fragment>
                     
                 <CssBaseline />
-                    <Container className="login-body" maxWidth="sm">
+                        <Container className="login-body" maxWidth="sm">
                         
-                    <Typography className="login-typography" component="div" style={{ backgroundColor: '#fff' }}>
+                    <Typography className="login-type-typography" component="div" style={{ backgroundColor: '#fff' }}>
                         <div className="login-header">
                             <a>
                                 <img src="https://sso.vu.lt/SSO/module.php/themevu/logo_sso_lt.svg" alt="logo"/>
