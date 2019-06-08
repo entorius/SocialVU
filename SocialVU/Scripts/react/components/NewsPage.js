@@ -36,7 +36,9 @@ const styles = theme => ({
 class MainPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.getNews();
+        this.state = {
+            news: this.getNews()
+        }
     }
 
     render() {
@@ -52,13 +54,13 @@ class MainPage extends React.Component {
                             <CardActionArea >
                                 <CardContent>
                                     <Typography color="secondary" variant="h5" >
-                                        {n.title}
+                                        {n.Title}
                                     </Typography>
                                     <Typography className={classes.pos} >
-                                        {n.date}
+                                        {n.Date.toString()}
                                     </Typography>
                                     <Typography variant="body1">
-                                        {n.description}
+                                        {n.Description}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
@@ -72,16 +74,20 @@ class MainPage extends React.Component {
 
     getNews() {
         var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            if (request.readyState == XMLHttpRequest.DONE) {
-                console.log(request.responseText);
-
-                return JSON.parse(request.responseText);
-            }
-        }
-        request.open('GET', 'news/list', true);
+        request.open('GET', 'news/list', false);
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.send();
+            
+        var news = JSON.parse(request.responseText)
+
+        news.forEach(n => {
+            var date = new Date(parseInt(n.Date.substr(6)));
+            var month = date.getMonth();
+            month += 1;
+            n.Date = date.getFullYear() + "/" + (month < "10" ? "0" + month : month) + "/" + (date.getDate() < "10" ? "0" + date.getDate() : date.getDate());
+        })
+
+        return news;
     }
 }
 
