@@ -105,7 +105,7 @@ export default class Login extends React.Component {
                                 </form>
                                 <div onClick={this.loginVerification}>
                                     {
-                                        this.state.unsuccesfullLogin && <div className="login-unsuccesful">Neteisingas prisijungimo vardas arba slaptažodis</div>
+                                        this.state.unsuccesfullLogin && <div className="login-unsuccesful">Neteisingas el.paštas ir/arba slaptažodis</div>
                                     }
                                     <Button variant="contained" class="login-button login-button-login">
                                         PRISIJUNGTI

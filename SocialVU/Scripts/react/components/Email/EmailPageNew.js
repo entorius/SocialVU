@@ -116,19 +116,8 @@ const styles = theme => ({
 class EmailPageNew extends React.Component {
     constructor(props) {
         super(props);
-        this.getIncomingEmails();
         this.state = {
-            events: [
-                { key: 1, title: "testas", userEmail: "someone.getCool@gmail.com", sender:"karolis.petrauskas@mif.dest.vu.lt", description: "aprašymas1", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 2, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas2", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 3, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas3", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 4, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas4", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 5, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas5", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 6, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas6", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 7, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas7", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-                { key: 8, title: "testas", userEmail: "someone.getCool@gmail.com", sender: "karolis.petrauskas@mif.dest.vu.lt",description: "aprašymas8", date: "2019-05-29", time: "18:00", location: "Vilnius University" },
-            ],
-            incommingMessages: [{Date: "", Description: "", From: "", Id: 1, Text: "", To: ""}],
+            incommingMessages: null,
             openDialog: false,
             dialogIndex: 0,
             messageIndex: 0
@@ -137,90 +126,105 @@ class EmailPageNew extends React.Component {
     render() {
         const { classes } = this.props
         const bull = <span className={classes.bullet}>•</span>;
-        return (
-            <div class="email">
-                <div class="email-options">
-                    <EmailOptions />
-                </div>
-                <div class="email-list">
-                <List className={classes.root} subheader={<li />}>
-                    {[0].map(sectionId => (
-                        <li key={`section-${sectionId}`} className={classes.listSection}>
-                            <ul className={classes.ul}>
-                                <ListSubheader className={classes.stickyHeader}>{`I'm sticky ${sectionId}`}</ListSubheader>
-                                    {this.state.incommingMessages.map((incommingMessage, index) => (
-                                    <Grid >
-                                            <Card className={classes.card} key={index}>
-                                                <ButtonBase
-                                                    className={classes.emailListItemClickAction}
-                                                    onClick={() => {
-                                                        this.setState({ messageIndex: index },
-                                                            function () {
-                                                                console.log(this.state.messageIndex);
-                                                            });
-                                                    }}
-                                                >
-                                                    <CardContent className={classes.contentListItem}>
-                                                        <Avatar alt="Remy Sharp" src="../../../../Pictures/elon-user.jpg" />
-                                                        <Typography className={classes.fromListItem} color="secondary" >
-                                                            {incommingMessage.From}
-                                                        </Typography>
-                                                        <Grid className={classes.titleParentListItem}>
-                                                            <Typography className={classes.descriptionListItem} color="secondary" >
-                                                                {incommingMessage.Description}
+        this.getIncomingEmails();
+        if (this.state.incommingMessages === null) {
+            return (
+                <div class="email">
+                    <div class="email-options">
+                        <EmailOptions />
+                    </div>
+                    <div className="email-no-messages">
+                        Žinučių nėra
+                    </div>
+                    </div>
+                );
+        }
+        else {
+            return (
+                <div class="email">
+                    <div class="email-options">
+                        <EmailOptions />
+                    </div>
+                    <div class="email-list">
+                        <List className={classes.root} subheader={<li />}>
+                            {[0].map(sectionId => (
+                                <li key={`section-${sectionId}`} className={classes.listSection}>
+                                    <ul className={classes.ul}>
+                                        <ListSubheader className={classes.stickyHeader}>{`I'm sticky ${sectionId}`}</ListSubheader>
+                                        {this.state.incommingMessages.map((incommingMessage, index) => (
+                                            <Grid >
+                                                <Card className={classes.card} key={index}>
+                                                    <ButtonBase
+                                                        className={classes.emailListItemClickAction}
+                                                        onClick={() => {
+                                                            this.setState({ messageIndex: index },
+                                                                function () {
+                                                                    console.log(this.state.messageIndex);
+                                                                });
+                                                        }}
+                                                    >
+                                                        <CardContent className={classes.contentListItem}>
+                                                            <Avatar alt="Remy Sharp" src="../../../../Pictures/elon-user.jpg" />
+                                                            <Typography className={classes.fromListItem} color="secondary" >
+                                                                {incommingMessage.From}
                                                             </Typography>
-                                                            <Grid
-                                                                container
-                                                                direction="row"
-                                                                className={classes.dateListItem}
-                                                            >
-                                                                <CalenderIcon className={classes.icon} />
-                                                                <Typography className={classes.text} color="primary" >Data: {incommingMessage.Date}</Typography>
+                                                            <Grid className={classes.titleParentListItem}>
+                                                                <Typography className={classes.descriptionListItem} color="secondary" >
+                                                                    {incommingMessage.Description}
+                                                                </Typography>
+                                                                <Grid
+                                                                    container
+                                                                    direction="row"
+                                                                    className={classes.dateListItem}
+                                                                >
+                                                                    <CalenderIcon className={classes.icon} />
+                                                                    <Typography className={classes.text} color="primary" >Data: {incommingMessage.Date}</Typography>
+                                                                </Grid>
                                                             </Grid>
-                                                        </Grid>
-                                                       
-                                                        <Typography className={classes.decriptionText}>
-                                                            {incommingMessage.Text}
-                                                        </Typography>
-                                                       
-                                                      
-                                                        <Divider className={classes.divider} />
-                                                        
-                                                    </CardContent>
-                                                </ButtonBase>
-                                            </Card>
-                                        </Grid>
-                                    ))}
-                            </ul>
-                        </li>
-                    ))}
-                    </List>
-                </div>
-                <div className="email-mail-body">
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography className={classes.mailBodyFrom} color="textSecondary" gutterBottom>
-                                From: {this.state.incommingMessages[this.state.messageIndex].From}
-                            </Typography>
-                            <Divider className={classes.divider} />
-                            <Typography className={classes.mailBodyTo} color="textSecondary" gutterBottom>
-                                To: {this.state.incommingMessages[this.state.messageIndex].To}
-                            </Typography>
-                            <Divider className={classes.divider} />
-                            <Typography className={classes.mailBodyDescription} color="textSecondary" gutterBottom>
-                                {this.state.incommingMessages[this.state.messageIndex].Description}
-                            </Typography>
-                            <Divider className={classes.divider} />
-                            <Typography className={classes.mailBodyText} variant="h5" component="h2">
-                                {this.state.incommingMessages[this.state.messageIndex].Text}
+
+                                                            <Typography className={classes.decriptionText}>
+                                                                {incommingMessage.Text}
+                                                            </Typography>
+
+
+                                                            <Divider className={classes.divider} />
+
+                                                        </CardContent>
+                                                    </ButtonBase>
+                                                </Card>
+                                            </Grid>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
+                        </List>
+                    </div>
+                    <div className="email-mail-body">
+                        <Card className={classes.card}>
+                            <CardContent>
+                                <Typography className={classes.mailBodyFrom} color="textSecondary" gutterBottom>
+                                    From: {this.state.incommingMessages[this.state.messageIndex].From}
                                 </Typography>
-                        </CardContent>
-                        
-                    </Card>
+                                <Divider className={classes.divider} />
+                                <Typography className={classes.mailBodyTo} color="textSecondary" gutterBottom>
+                                    To: {this.state.incommingMessages[this.state.messageIndex].To}
+                                </Typography>
+                                <Divider className={classes.divider} />
+                                <Typography className={classes.mailBodyDescription} color="textSecondary" gutterBottom>
+                                    {this.state.incommingMessages[this.state.messageIndex].Description}
+                                </Typography>
+                                <Divider className={classes.divider} />
+                                <Typography className={classes.mailBodyText} variant="h5" component="h2">
+                                    {this.state.incommingMessages[this.state.messageIndex].Text}
+                                </Typography>
+                            </CardContent>
+
+                        </Card>
+                    </div>
+
                 </div>
-                
-            </div>
-        );
+            );
+        }
     }
     getIncomingEmails() {
         var userId = {

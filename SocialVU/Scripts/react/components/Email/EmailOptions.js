@@ -8,6 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send'
 
 const styles = theme => ({
     root: {
@@ -37,6 +38,16 @@ class EmailOptions extends React.Component {
                         selected={selected === 0}
                     >
                         <ListItemIcon>
+                            <SendIcon className="email-options-icon" />
+                        </ListItemIcon>
+                        <ListItemText className="email-options-text" primary="Send" />
+                    </ListItem>
+                    <ListItem
+                        button
+                        onClick={() => this.updateSelected(0)}
+                        selected={selected === 1}
+                    >
+                        <ListItemIcon>
                             <InboxIcon className="email-options-icon"/>
                         </ListItemIcon>
                         <ListItemText className="email-options-text" primary="Inbox" />
@@ -44,7 +55,7 @@ class EmailOptions extends React.Component {
                     <ListItem
                         button
                         onClick={() => this.updateSelected(0)}
-                        selected={selected === 1}
+                        selected={selected === 2}
                     >
                         <ListItemIcon>
                             <DraftsIcon className="email-options-icon"/>
@@ -57,14 +68,14 @@ class EmailOptions extends React.Component {
                     <ListItem
                         button
                         onClick={() => this.updateSelected(0)}
-                        selected={selected === 2}
+                        selected={selected === 3}
                     >
                         <ListItemText className="email-options-text" primary="Trash" />
                     </ListItem>
                     <ListItem
                         button
                         onClick={() => this.updateSelected(0)}
-                        selected={selected === 3}
+                        selected={selected === 4}
                     >
                         <ListItemText className="email-options-text" primary="Spam" />
                     </ListItem>
